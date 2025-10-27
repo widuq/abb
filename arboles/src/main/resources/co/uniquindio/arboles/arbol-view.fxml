@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.uniquindio.arboles.ArbolController">
+
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+
+            <!-- ================================================== -->
+            <!-- LÍNEA 1: CREAR ÁRBOL INICIAL -->
+            <!-- ================================================== -->
+            <HBox spacing="20"> <!-- 🔹 Aumentamos el espacio general -->
+                <Label text="Datos iniciales:" prefWidth="130"/>
+                <TextField fx:id="campoDatos" promptText="Ej: 1,4,12,3" prefWidth="260"/>
+                <Button fx:id="btnAgregarArbol" text="Agregar Árbol Inicial"
+                        prefWidth="160" onAction="#agregarDatos"/>
+            </HBox>
+
+            <!-- ================================================== -->
+            <!-- LÍNEA 2: AGREGAR NODOS INDIVIDUALES -->
+            <!-- ================================================== -->
+            <HBox spacing="20">
+                <Label text="Agregar nodo:" prefWidth="130"/>
+                <TextField fx:id="campoAgregarNodo" promptText="Ej: 15"
+                           disable="true" prefWidth="260"/>
+                <Button fx:id="btnAgregarNodo" text="Agregar Nodo"
+                        prefWidth="160" onAction="#agregarNodo" disable="true"/>
+            </HBox>
+
+            <!-- ================================================== -->
+            <!-- LÍNEA 3: RECORRER -->
+            <!-- ================================================== -->
+            <HBox spacing="20">
+                <Label text="Recorrer árbol:" prefWidth="130"/>
+                <ComboBox fx:id="comboRecorrido" prefWidth="260">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Inorden"/>
+                            <String fx:value="Preorden"/>
+                            <String fx:value="Postorden"/>
+                            <String fx:value="Amplitud"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="Mostrar Recorrido" prefWidth="160" onAction="#mostrarRecorrido"/>
+            </HBox>
+
+            <!-- ================================================== -->
+            <!-- LÍNEA 4: OBTENER INFORMACIÓN -->
+            <!-- ================================================== -->
+            <HBox spacing="20">
+                <Label text="Obtener:" prefWidth="130"/>
+                <ComboBox fx:id="comboObtener" onAction="#manejarSeleccionObtener" prefWidth="120">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Peso"/>
+                            <String fx:value="Altura"/>
+                            <String fx:value="Nivel"/>
+                            <String fx:value="Cantidad de hojas"/>
+                            <String fx:value="Menor"/>
+                            <String fx:value="Mayor"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <TextField fx:id="campoExtra" promptText="Ingresar valor nodo"
+                           disable="true" prefWidth="120"/>
+                <Button text="Calcular / Mostrar" prefWidth="160" onAction="#obtenerInformacion"/>
+            </HBox>
+
+            <!-- ================================================== -->
+            <!-- LÍNEA 5: ELIMINAR NODOS / ÁRBOL -->
+            <!-- ================================================== -->
+            <HBox spacing="20">
+                <Label text="Eliminar:" prefWidth="130"/>
+                <TextField fx:id="campoEliminarNodo" promptText="Valor del nodo a eliminar"
+                           prefWidth="260"/>
+                <Button fx:id="btnEliminarNodo" text="Eliminar Nodo"
+                        prefWidth="160" onAction="#eliminarNodo"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnBorrarArbol" text="Borrar Árbol"
+                        prefWidth="160" onAction="#borrarArbol"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- ================================================== -->
+    <!-- PANEL CENTRAL -->
+    <!-- ================================================== -->
+    <center>
+        <ScrollPane fx:id="scrollPanel" fitToWidth="true" fitToHeight="true" pannable="true">
+            <content>
+                <AnchorPane fx:id="panelDibujo"
+                            style="-fx-background-color: white; -fx-border-color: #cfd8dc;"
+                            prefWidth="1000.0" prefHeight="800.0"
+                            minWidth="800.0" minHeight="600.0"
+                            AnchorPane.topAnchor="0.0"
+                            AnchorPane.bottomAnchor="0.0"
+                            AnchorPane.leftAnchor="0.0"
+                            AnchorPane.rightAnchor="0.0"/>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- ================================================== -->
+    <!-- ÁREA DE RESULTADOS -->
+    <!-- ================================================== -->
+    <bottom>
+        <TextArea fx:id="areaResultado" prefHeight="100" editable="false"
+                  style="-fx-font-family: 'Consolas'; -fx-font-size: 16px;"/>
+    </bottom>
+
+</BorderPane>
