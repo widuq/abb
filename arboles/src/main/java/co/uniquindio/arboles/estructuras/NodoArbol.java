@@ -2,20 +2,20 @@ package co.uniquindio.arboles.estructuras;
 
 public class NodoArbol<T extends Comparable<T>> {
     private T dato;
-    private NodoArbol<T> getIzquierdo,derecho;
+    private NodoArbol<T> izquierdo,derecho;
 
     public NodoArbol(T dato){//NodoArbol<T> izquierdo, NodoArbol<T> derecho) {
         this.dato = dato;
-        this.getIzquierdo = null;
+        this.izquierdo = null;
         this.derecho = null;
     }
 
     public NodoArbol<T> getIzquierdo() {
-        return getIzquierdo;
+        return izquierdo;
     }
 
     public void setIzquierdo(NodoArbol<T> izquierdo) {
-        this.getIzquierdo = izquierdo;
+        this.izquierdo = izquierdo;
     }
 
     public NodoArbol<T> getDerecho() {
@@ -35,7 +35,7 @@ public class NodoArbol<T extends Comparable<T>> {
     }
 
     public boolean esHoja() {
-        return getIzquierdo == null && derecho == null;
+        return izquierdo == null && derecho == null;
     }
 
     }
