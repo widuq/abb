@@ -154,7 +154,7 @@ public class ArbolController {
         }
     }
 
-    /** Habilita o deshabilita el campo 'campoExtra' según la selección */
+    /** Habilita o deshabilita el 'campoExtra' según la selección */
     @FXML
     private void manejarSeleccionObtener() {
         String opcion = comboObtener.getValue();

@@ -38,7 +38,7 @@ public class ArbolBinario<T extends Comparable<T>> {
                 + nodo.getDato().toString() + " ";
     }
 
-    // Amplitud: nivel por nivel (BFS)
+    // Amplitud: nivel por nivel izquierda a derecha
     public String imprimirAmplitud() {
         if (nodoRaiz == null) return "El árbol está vacío.";
 
@@ -84,6 +84,7 @@ public class ArbolBinario<T extends Comparable<T>> {
         return nodo;
     }
 
+    //método para verificar si existe un dato
     public boolean buscarNodo(T dato) {
         return buscarNodo(nodoRaiz, dato);
     }
@@ -210,18 +211,4 @@ public class ArbolBinario<T extends Comparable<T>> {
         return nodoRaiz;
     }
 
-    // Estructura textual del árbol (para mostrar en interfaz)
-    public String mostrarEstructura() {
-        if (nodoRaiz == null) return "El árbol está vacío.\n";
-        return mostrarEstructuraRecursivo(nodoRaiz, 0);
-    }
-
-    private String mostrarEstructuraRecursivo(NodoArbol<T> nodo, int nivel) {
-        if (nodo == null) return "";
-        StringBuilder sb = new StringBuilder();
-        sb.append(mostrarEstructuraRecursivo(nodo.getDerecho(), nivel + 1));
-        sb.append("   ".repeat(nivel)).append(nodo.getDato()).append("\n");
-        sb.append(mostrarEstructuraRecursivo(nodo.getIzquierdo(), nivel + 1));
-        return sb.toString();
-    }
 }
